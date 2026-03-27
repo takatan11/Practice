@@ -1,0 +1,162 @@
+:root {
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --text-color-secondary: #c0c0c0;
+    --accent-color: #00aaff;
+    --error-color: #ff6b6b;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: var(--text-color);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+#city-input {
+    flex-grow: 1;
+    padding: 14px 18px;
+    font-size: 16px;
+    background-color: var(--card-bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#city-input::placeholder {
+    color: var(--text-color-secondary);
+}
+
+#city-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.3);
+}
+
+.search-form button {
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #0095e0;
+    transform: translateY(-2px);
+}
+
+/* 天気情報カード */
+.weather-card {
+    background: var(--card-bg-color);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.city-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.weather-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.weather-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.temperature {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-left: 1rem;
+}
+
+.weather-description {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+    color: var(--text-color-secondary);
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+}
+
+.weather-details .label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 5px;
+}
+
+/* ユーティリティクラス */
+.hidden {
+    display: none !important;
+}
+
+.info-text, .error-text {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 2rem;
+    color: var(--text-color-secondary);
+}
+
+.error-text {
+    color: var(--error-color);
+    font-weight: 700;
+}
+
+/* ローディングスピナー */
+.loader {
+    border: 5px solid #f3f3f33a;
+    border-top: 5px solid var(--accent-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
