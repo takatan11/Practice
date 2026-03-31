@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext"
-  }
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "types": ["vite/client"]
+  },
+  "include": ["**/*.ts"]
 }

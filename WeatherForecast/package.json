@@ -1,8 +1,15 @@
 {
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "dotenv": "^17.3.1"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0"
+    "@types/node": "^25.5.0",
+    "typescript": "^5.x.x",
+    "vite": "^5.x.x"
   }
 }
