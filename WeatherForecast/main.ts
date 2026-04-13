@@ -5,7 +5,7 @@ const form = document.getElementById("search-form") as HTMLFormElement;
     const humidity = document.getElementById("humidity") as HTMLInputElement;
     const wind = document.getElementById("wind-speed") as HTMLInputElement;
     const weathericon = document.getElementById("weather-icon") as HTMLImageElement;
-    const apikey = import.meta.env.VITE_API_KEY;
+    const apikey = (import.meta as any).env.VITE_API_KEY as string;
     const error = document.getElementById("error-text") as HTMLDivElement;
 
 function main() {

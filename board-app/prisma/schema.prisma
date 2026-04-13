@@ -4,21 +4,37 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
-model user{
-  id Int @id @default(autoincrement())
+// ユーザーの権限を定義
+enum Role {
+  USER
+  ADMIN
+}
 
-  name String
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  role      Role     @default(USER) // デフォルトは一般ユーザー
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     Post[]   // 1対多のリレーション（Userは複数のPostを持つ）
+}
 
-  email String @unique
-
-  createdAt @default(now())
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  Int      // 著者のユーザーID
+  author    User     @relation(fields: [authorId], references: [id])
 }
 
